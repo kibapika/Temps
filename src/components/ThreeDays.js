@@ -4,8 +4,9 @@ import { useState } from "react";
 
 const ThreeDays = () => {
   const [response, setResponse] = useState(null);
+  const [location, setLocation] = useState("");
 
-  const fetchFiveDays = async () => {
+  const fetchThreeDays = async () => {
     try {
       const res = await axios.get(
         "https://weatherapi-com.p.rapidapi.com/forecast.json",
@@ -15,7 +16,7 @@ const ThreeDays = () => {
               "4c2350f8fdmsh67c94cfd9be6a99p12e932jsn8bf982d7a5dd",
             "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
           },
-          params: { q: 'New York', days: '5' },
+          params: { q: location, days: '3' },
         }
       );
       setResponse(res.data);
@@ -24,11 +25,12 @@ const ThreeDays = () => {
     }
   };
 
-  const showWeather = async () => {
+  const search = async (evt) => {
     try {
-      console.log("this works");
-      fetchFiveDays();
-      console.log("results --->", response);
+      if (evt.key === "Enter") {
+        fetchThreeDays();
+        console.log("results --->", response);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -36,13 +38,16 @@ const ThreeDays = () => {
 
   return (
     <div>
-      <h1 className="text-xl">5 Day Forecast</h1>
-      <button
-        className="border-black border-solid border-2"
-        onClick={showWeather}
-      >
-        Click to Show
-      </button>
+      <h1 className="text-xl">3 Day Forecast</h1>
+      <div id="search">
+        <input
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          placeholder="Enter Location"
+          onKeyPress={search}
+          type="text"
+        ></input>
+      </div>
       {response !== null ? (
         <div>
           <section id="day0">
