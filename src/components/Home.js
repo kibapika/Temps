@@ -4,8 +4,9 @@ import Current from "./Current";
 
 const Home = () => {
     return (
-        <div>
-            <h1 className="text-3xl">Home</h1>
+        <div className="background">
+            <h1 className="text-3xl">Welcome to Temps</h1>
+            <p>"Interactive Weather App"</p>
             <Current />
             <ThreeDays />
         </div>

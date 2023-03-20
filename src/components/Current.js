@@ -5,6 +5,7 @@ import { useState } from "react";
 const Current = () => {
   const [response, setResponse] = useState(null);
   const [location, setLocation] = useState("");
+  const [fahren, setFahren] = useState(false);
 
   const fetchToday = async () => {
     try {
@@ -28,48 +29,112 @@ const Current = () => {
   const search = async (evt) => {
     try {
       if (evt.key === "Enter") {
+        evt.preventDefault();
         fetchToday();
-        console.log("results --->", response);
+        // console.log("results --->", response);
+        setLocation("");
       }
     } catch (err) {
       console.log(err);
     }
   };
 
+  const changeTempView = () => {
+    setFahren(!fahren);
+  };
+
   return (
-    <div>
-      <h1 className="text-xl">Current Forecast</h1>
-      <div id="search">
-        <input
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-          placeholder="Enter Location"
-          onKeyPress={search}
-          type="text"
-        ></input>
-      </div>
+    <div className="flex flex-col justify-center items-center pt-2 w-[40rem]">
+      <section className="flex flex-row items-center">
+        <h1 className="text-xl mr-5">Current Forecast</h1>
+        {/* ------------------------------------------- */}
+        <div className="search">
+          <input
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
+            onKeyPress={search}
+            type="text"
+            required
+          />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Enter Location</label>
+        </div>
+        {/* ------------------------------------------- */}
+        <div className="toggle-button-cover">
+          <div className="button r" id="button-1">
+            <input
+              type="checkbox"
+              className="checkbox"
+              onClick={changeTempView}
+            />
+            <div className="knobs"></div>
+            <div className="layer"></div>
+          </div>
+        </div>
+      </section>
       {response !== null ? (
-        <section id="today">
-          <div>
-            <p>{response.location.name}</p>
-            <p>{response.current.last_updated}</p>
-          </div>
-          <div>
-            <p>Conditions {response.current.condition.text}</p>
-            <img alt="img" src={response.current.condition.icon} />
-          </div>
-          <div>
-            <p>Feels like {response.current.feelslike_c}C</p>
-            <p>Feels like {response.current.feelslike_f}F</p>
-          </div>
-          <div>
-            <p>Temp {response.current.temp_c}C</p>
-            <p>Temp {response.current.temp_f}F</p>
-          </div>
-          <div>
-            <p>Percipitation {response.current.precip_in}</p>
-          </div>
-        </section>
+        <div className="backdrop-blur-sm bg-white/20 rounded-md p-4 w-[30rem]">
+          {fahren === false ? (
+            <section id="today">
+              <div className="flex flex-row justify-evenly items-center">
+                <span className="text-[25px]">{response.location.name}</span>
+                <span>Last Updated: {response.current.last_updated}</span>
+              </div>
+              <div className="flex flex-row justify-evenly items-center pt-2">
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-[50px]">
+                    {response.current.temp_f}°F
+                  </span>
+                  <span className="italic">
+                    Feels like {response.current.feelslike_f}°F
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    alt="img"
+                    src={response.current.condition.icon}
+                    className="w-[70px]"
+                  />
+                  <span>{response.current.condition.text}</span>
+                </div>
+              </div>
+              <div className="flex flex-row justify-evenly items-center pt-3">
+                <span>Percipitation {response.current.precip_in} in</span>
+                <span>Wind {response.current.wind_mph} mph</span>
+              </div>
+            </section>
+          ) : (
+            <section id="today">
+              <div className="flex flex-row justify-evenly items-center">
+                <span className="text-[25px]">{response.location.name}</span>
+                <span>Last Updated {response.current.last_updated}</span>
+              </div>
+              <div className="flex flex-row justify-evenly items-center pt-2">
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-[50px]">
+                    {response.current.temp_c}°C
+                  </span>
+                  <span className="italic">
+                    Feels like {response.current.feelslike_c}°C
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    alt="img"
+                    src={response.current.condition.icon}
+                    className="w-[70px]"
+                  />
+                  <span>{response.current.condition.text}</span>
+                </div>
+              </div>
+              <div className="flex flex-row justify-evenly items-center pt-3">
+                <span>Percipitation {response.current.precip_in} in</span>
+                <span>Wind {response.current.wind_mph} mph</span>
+              </div>
+            </section>
+          )}
+        </div>
       ) : null}
     </div>
   );
