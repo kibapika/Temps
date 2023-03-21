@@ -74,7 +74,7 @@ const Current = () => {
         </div>
       </section>
       {response !== null ? (
-        <div className="backdrop-blur-sm bg-white/20 rounded-md p-4 w-[30rem]">
+        <div className="backdrop-blur-sm bg-white/20 rounded-md p-4 mt-5 w-[30rem]">
           {fahren === false ? (
             <section id="today">
               <div className="flex flex-row justify-evenly items-center">
@@ -108,7 +108,7 @@ const Current = () => {
             <section id="today">
               <div className="flex flex-row justify-evenly items-center">
                 <span className="text-[25px]">{response.location.name}</span>
-                <span>Last Updated {response.current.last_updated}</span>
+                <span>Last Updated: {response.current.last_updated}</span>
               </div>
               <div className="flex flex-row justify-evenly items-center pt-2">
                 <div className="flex flex-col justify-center items-center">
