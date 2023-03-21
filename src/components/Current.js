@@ -74,7 +74,7 @@ const Current = () => {
         </div>
       </section>
       {response !== null ? (
-        <div className="backdrop-blur-sm bg-white/20 rounded-md p-4 mt-5 w-[30rem]">
+        <div className="backdrop-blur-sm bg-white/20 rounded-md p-4 mt-5 w-fit">
           {fahren === false ? (
             <section id="today">
               <div className="flex flex-row justify-evenly items-center">
