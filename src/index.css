@@ -5,22 +5,29 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .background {
   width: 100%;
-  min-height: 100vh;
+  height: 110vh;
   background: url("/Users/evali/Desktop/BootCamp/projects/weather/weather/public/img/weatherBack2.jpg")
     no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 500px) {
+  .background {
+    width: 220vw;
+    height: 220vh;
+    background: url("/Users/evali/Desktop/BootCamp/projects/weather/weather/public/img/weatherBack2.jpg")
+      no-repeat center center fixed;
+    background-size: cover;
+  }
 }
 
 /* switch */
