@@ -44,9 +44,9 @@ const ThreeDays = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center pt-5 w-[50rem]">
-      <section className="flex flex-row justify-center items-center">
-        <h1 className="text-xl mr-5">3-Day Forecast</h1>
+    <div className="flex flex-col justify-center items-center pt-5 pb-3 w-screen">
+      <section className="w-full flex flex-row justify-evenly items-center text-center">
+        <h1 className="text-xl">3-Day Forecast</h1>
         {/* ------------------------------------------- */}
         <div className="search">
           <input

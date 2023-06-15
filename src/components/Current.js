@@ -44,9 +44,9 @@ const Current = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center pt-2 w-[40rem]">
-      <section className="flex flex-row items-center">
-        <h1 className="text-xl mr-5">Current Forecast</h1>
+    <div className="flex flex-col justify-center items-center pt-2 w-screen">
+      <section className="w-full flex flex-row justify-evenly items-center text-center">
+        <h1 className="text-xl">Current Forecast</h1>
         {/* ------------------------------------------- */}
         <div className="search">
           <input
