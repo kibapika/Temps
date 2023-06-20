@@ -8,7 +8,10 @@ Recreation of a weather app built with <a href="https://github.com/facebook/crea
 
 <h3 align="center"><a href="https://temps-evali.vercel.app/">Welcome to Temps!</a></h3>
 
-![HomePg](homepg.png)
+<div align="center">
+<img src="homepg2.png" alt="homgPg">
+<img src="mobile.png" alt="mobile" height="500">
+</div>
 
 Built with ...
 

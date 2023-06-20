@@ -111,7 +111,7 @@ const Current = () => {
             <section id="today">
               <div className="flex flex-row justify-evenly items-center">
                 <span className="text-[25px]">{response.location.name}</span>
-                <span>Last Updated: {response.current.last_updated}</span>
+                <span>Last Updated {response.current.last_updated}</span>
               </div>
               <div className="flex flex-row justify-evenly items-center pt-2">
                 <div className="flex flex-col justify-center items-center">
