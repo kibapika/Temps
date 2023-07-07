@@ -1,6 +1,7 @@
 import React from "react";
 import ThreeDays from "./ThreeDays";
 import Current from "./Current";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <p>"Interactive Weather App"</p>
       <Current />
       <ThreeDays />
+      <Footer />
     </div>
   );
 };
